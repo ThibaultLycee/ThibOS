@@ -1,3 +1,5 @@
+%define ENDL 0xa, 0xd
+
 PrintString:
     push ax
     push bx
@@ -15,8 +17,8 @@ PrintString:
         ret
 
 LoadingString:
-    db "ThibOS is loading up...", 0xa, 0
+    db "ThibOS is loading up...", ENDL, 0
 StartReadingDisk:
-    db "Reading disk...", 0xa, 0
+    db "Reading disk...", ENDL, 0
 FinishedReadingDisk:
-    db "Finished reading disk...", 0xa, 0
+    db "Finished reading disk...", ENDL, 0
