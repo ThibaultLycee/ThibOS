@@ -3,10 +3,11 @@ PROGRAM_SPACE equ 0x7e00
 ReadDisk:
     mov bx, PROGRAM_SPACE
     mov al, 4
+    mov ah, 4
     mov dl, [BOOT_DISK]
     mov ch, 0x00
     mov dh, 0x00
-    mov cl, 0x01
+    mov cl, 0x04
     
     int 0x13
     jc DiskReadFailed    
