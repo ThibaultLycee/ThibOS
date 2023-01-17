@@ -2,12 +2,12 @@ PROGRAM_SPACE equ 0x7e00
 
 ReadDisk:
     mov bx, PROGRAM_SPACE
-    mov al, 4
-    mov ah, 4
-    mov dl, [BOOT_DISK]
+    mov al, 16			; Number of sectors to read
+    mov ah, 0x02		; Read from drive
+    mov dl, [BOOT_DISK]		; Which drive to read from
     mov ch, 0x00
     mov dh, 0x00
-    mov cl, 0x04
+    mov cl, 0x02		; Where to start reading from (sector, 1-based)
     
     int 0x13
     jc DiskReadFailed    
@@ -18,7 +18,7 @@ BOOT_DISK:
     db 0
 
 DiskReadErrorString:
-    db "disk read failed", 0
+    db "Disk reading failed", 0
 
 DiskReadFailed:
     mov bx, DiskReadErrorString

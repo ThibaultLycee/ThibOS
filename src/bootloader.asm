@@ -15,7 +15,7 @@ call ReadDisk
 mov bx, FinishedReadingDisk
 call PrintString
 
-jmp $
+jmp PROGRAM_SPACE
 
 %include "DiskRead.asm"
 %include "Print.asm"
